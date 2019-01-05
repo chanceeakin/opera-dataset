@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Audition Analysis`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Audition Data Analysis`,
+    description: `An ongoing project in data science, data viz, and learning how to build better ML models`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -25,6 +25,14 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-86915404-6',
+        // Puts tracking script in the head instead of the body
+        head: true,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
