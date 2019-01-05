@@ -29,7 +29,18 @@ const Layout = ({ children }) => (
         >
           {children}
           <footer>
-            © 2018, Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <p>
+              © 2019. Made with{' '}
+              <span role="img" aria-label="heart">
+                ❤️
+              </span>{' '}
+              and{' '}
+              <span role="img" aria-label="bourbon">
+                🥃
+              </span>
+              by <a href="https://chanceeakin.io">Chance Eakin</a> using{' '}
+              <a href="https://www.gatsbyjs.org">GatsbyJS.</a>
+            </p>
           </footer>
         </div>
       </>
