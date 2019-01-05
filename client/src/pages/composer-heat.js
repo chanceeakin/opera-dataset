@@ -3,8 +3,8 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import Wrapper from '../components/chart-wrapper'
-import ComposerHeat from '../components/composer-heat'
+import Wrapper from '../components/charts/chart-wrapper'
+import ComposerHeat from '../components/charts/composer-heat'
 
 const SecondPage = () => (
   <Layout>
