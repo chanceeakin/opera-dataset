@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Audition Data Analysis`,
     description: `An ongoing project in data science, data viz, and learning how to build better ML models`,
-    author: `@gatsbyjs`,
+    author: `Chance Eakin`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,7 +14,15 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/content`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -37,6 +45,6 @@ module.exports = {
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
   ],
 }
