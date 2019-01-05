@@ -1,22 +1,7 @@
 ---
-title: Index
+title: Young Artist Audition Data
 date: January 5, 2019
 ---
-
-## Young Artist Audition Data
-
-Using a data set sourced from a certain opera company that performs in a
-Barn, this site is an exploration of statistical and historical trends in
-audition selection choices.
-
-This site constitutes some preliminary work with visualization of the 2019
-audition tour data, as well as some lazy manipulation of the initial data
-set. Instances of the dataset exist in both CSV and json, and some helper
-utilities are included to convert said dataset into a `pandas.Dataframe`.
-
-There were 3750 instances from 1108 unique arias (operatic solos for
-software folks) on audition sheets this year (or they heard 3750 singers
-in person...optimistic but unlikely).
 
 ### Why am I building this?
 
@@ -32,4 +17,7 @@ an analysis.
 - Additional Charts and Graphs, delivered on a weekly basis. I'm also an optimist on that assessment, and beg indulgence for those times where...life gets in the way.
 - Would like to pull this into a jupyter notebook, as well as aggregate previous seasons of audition data for predictive analytics on the 2020 audition season. As much fun as it is to passive aggressively predict next years' lists, wouldn't it be more fun to quantitatively predict how many hopeful mezzos are going to offer "Must the winter come so soon?" before we even crack open that YAP tracking site?
 
-#### Last Updated: January 5th, 2019
+### Want to help?
+
+- Ping [me](mailto:chance.eakin@gmail.com).
+- Read the [source code](https://github.com/chanceeakin/opera-dataset) and send me a PR. That's short for [pull request](https://yangsu.github.io/pull-request-tutorial/).

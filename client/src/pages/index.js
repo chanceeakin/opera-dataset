@@ -6,17 +6,35 @@ import SEO from '../components/seo'
 
 const IndexPage = React.memo(({ data }) => {
   const { markdownRemark } = data
-  const { html } = markdownRemark
+  const { html, frontmatter } = markdownRemark
+  const { date, title } = frontmatter
   return (
     <Layout>
       <SEO
         title="Home"
         keywords={[`audition`, `opera`, `data`, `react`, `gatsby`]}
       />
-      <div
+      <h1
         className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={{ __html: title }}
       />
+      <p>
+        Using a data set sourced from a certain opera company that performs in a
+        Barn, this site is an exploration of statistical and historical trends
+        in audition selection choices.
+      </p>
+      <p>
+        This site constitutes some preliminary work with visualization of the
+        2019 audition tour data, as well as some lazy manipulation of the
+        initial data set. Instances of the dataset exist in both CSV and json,
+        and some helper utilities are included to convert said dataset into a{' '}
+        <code>pandas.Dataframe</code>.
+      </p>
+      <p>
+        There were 3750 instances from 1108 unique arias (operatic solos for
+        software folks) on audition sheets this year (or they heard 3750 singers
+        in person...optimistic but unlikely).
+      </p>
       <h3>Currently Available Charts</h3>
       <ul>
         <li>
@@ -26,20 +44,25 @@ const IndexPage = React.memo(({ data }) => {
           <Link to="/composer-heat/">Data by Composer</Link>
         </li>
       </ul>
-      <h3>Resources and Links</h3>
-      <ul>
-        <li>
-          <a href="https://github.com/chanceeakin/opera-dataset">Source Code</a>
-        </li>
-      </ul>
+      <div
+        className="blog-post-content"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+      <p>Last Updated: {date}</p>
     </Layout>
   )
 })
 
 export const query = graphql`
   query IndexQuery {
-    markdownRemark(frontmatter: { title: { eq: "Index" } }) {
+    markdownRemark(
+      frontmatter: { title: { eq: "Young Artist Audition Data" } }
+    ) {
       html
+      frontmatter {
+        date
+        title
+      }
     }
   }
 `
