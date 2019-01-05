@@ -4,18 +4,16 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Wrapper from '../components/chart-wrapper'
-import OtherBar from '../components/other-bar'
+import ComposerHeat from '../components/composer-heat'
 
 const SecondPage = () => (
   <Layout>
-    <SEO title="By Category" />
+    <SEO title="Composer Heatmap" />
     <Wrapper
       events
-      margin={{
-        top: 80,
-      }}
-      title="Breakdown of aria offerings by Audition Category and voice type"
-      component={OtherBar}
+      margin={{ top: 50, left: 50, right: 0, bottom: 100 }}
+      title="Breakdown by Composer"
+      component={ComposerHeat}
     />
     <Link to="/">Go back to the homepage</Link>
   </Layout>

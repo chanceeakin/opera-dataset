@@ -47,6 +47,9 @@ const IndexPage = () => (
       <li>
         <Link to="/by-category/">Data by Audition Category</Link>
       </li>
+      <li>
+        <Link to="/composer-heat/">Data by Composer</Link>
+      </li>
     </ul>
     <h3>Resources and Links</h3>
     <ul>
