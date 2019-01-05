@@ -17,7 +17,10 @@ const IndexPage = () => (
     </p>
     <p>
       This site constitutes some preliminary work with visualization of the 2019
-      audition tour data.
+      audition tour data and severely lazy manipulation of the initial data set.
+      Instances of the dataset exist in both CSV and json, and some helper
+      utilities are included to convert said dataset into a{' '}
+      <code>pandas.Dataframe</code>.
     </p>
     <p>
       There were 3750 unique iterations/instances of a given aria, though I'm
@@ -26,7 +29,11 @@ const IndexPage = () => (
     </p>
     <h3>Future Plans</h3>
     <ul>
-      <li>Additional Charts and Graphs</li>
+      <li>
+        Additional Charts and Graphs, delivered on a weekly basis. I'm also an
+        optimist on that assessment, and beg indulgence for those times
+        where...life gets in the way.
+      </li>
       <ul />
       <li>
         Would like to pull this into a jupyter notebook, as well as aggregate
@@ -47,6 +54,7 @@ const IndexPage = () => (
         <a href="https://github.com/chanceeakin/opera-dataset">Source Code</a>
       </li>
     </ul>
+    <p>Last Updated: January 4th, 2019</p>
   </Layout>
 )
 
