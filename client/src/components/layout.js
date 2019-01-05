@@ -17,7 +17,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <React.Fragment>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -28,13 +28,20 @@ const Layout = ({ children }) => (
           }}
         >
           {children}
-          <footer>
+          <footer
+            style={{
+              paddingTop: '2rem',
+            }}
+          >
             <p>
               © 2019. Made with{' '}
               <span role="img" aria-label="heart">
                 ❤️
               </span>{' '}
-              and{' '}
+              <span role="img" aria-label="heart">
+                ☕️
+              </span>
+              {' and '}
               <span role="img" aria-label="bourbon">
                 🥃
               </span>
@@ -43,7 +50,7 @@ const Layout = ({ children }) => (
             </p>
           </footer>
         </div>
-      </>
+      </React.Fragment>
     )}
   />
 )

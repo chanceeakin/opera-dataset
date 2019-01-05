@@ -1,6 +1,11 @@
 import React from 'react'
 import cx from 'classnames'
+import styled from '@emotion/styled'
 import { withScreenSize } from '@vx/responsive'
+
+const Container = styled.div`
+  margin-bottom: 2rem;
+`
 
 const Wrapper = React.memo(
   ({
@@ -20,7 +25,7 @@ const Wrapper = React.memo(
     const height = width * 0.6
 
     return (
-      <div className="container">
+      <Container>
         <div style={{ width: width }}>
           <h1>{title}</h1>
         </div>
@@ -41,7 +46,7 @@ const Wrapper = React.memo(
           })}
         </div>
         {description && React.createElement(description, { width, height })}
-      </div>
+      </Container>
     )
   }
 )
