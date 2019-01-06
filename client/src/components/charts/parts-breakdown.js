@@ -6,6 +6,7 @@ import { AxisBottom } from '@vx/axis'
 import { scaleBand, scaleLinear, scaleOrdinal } from '@vx/scale'
 import { withTooltip, Tooltip } from '@vx/tooltip'
 import { LegendOrdinal } from '@vx/legend'
+import { ARTIST_CATEGORIES, PARTS } from '../../constants'
 import json from '../../../../data/data.json'
 
 const purple1 = '#6c5efb'
@@ -13,10 +14,7 @@ const purple2 = '#c998ff'
 const purple3 = '#a44afe'
 const bg = '#eaedff'
 
-const keys = ['Filene', 'Studio']
-const parts = ['Soprano', 'Mezzo', 'Counter-tenor', 'Tenor', 'Baritone', 'Bass']
-
-const totals = parts.map(part => {
+const totals = PARTS.map(part => {
   return json.reduce((acc, curr) => {
     if (curr['Voice Type'] === part) {
       acc += curr['Frequency']
@@ -25,10 +23,10 @@ const totals = parts.map(part => {
   }, 0)
 })
 
-const filene = json.filter(f => f['Artist Category'] === keys[0])
-const studio = json.filter(f => f['Artist Category'] === keys[1])
+const filene = json.filter(f => f['Artist Category'] === ARTIST_CATEGORIES[0])
+const studio = json.filter(f => f['Artist Category'] === ARTIST_CATEGORIES[1])
 
-const data = parts.reduce((acc, part) => {
+const data = PARTS.reduce((acc, part) => {
   const reducedFilene = filene.reduce((acc1, curr) => {
     if (curr['Voice Type'] === part) {
       acc1 += curr['Frequency']
@@ -61,7 +59,7 @@ const yScale = scaleLinear({
   nice: true,
 })
 const color = scaleOrdinal({
-  domain: keys,
+  domain: ARTIST_CATEGORIES,
   range: [purple1, purple2, purple3],
 })
 
@@ -113,7 +111,7 @@ const BarStackComponent = React.memo(
             <Group top={margin.top}>
               <BarStack
                 data={data}
-                keys={keys}
+                keys={ARTIST_CATEGORIES}
                 x={x}
                 xScale={xScale}
                 yScale={yScale}
