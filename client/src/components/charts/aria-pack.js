@@ -28,12 +28,12 @@ const findScale = selectedButton => {
       return scaleThreshold({
         domain: [5, 10, 20, 30, 40, 45],
         range: [
-          '#ffe108',
-          '#abfd09',
-          '#3dfc0b',
-          '#0dfb49',
-          '#0ffab6',
-          '#11D2F9',
+          '#f2f0f7',
+          '#dadaeb',
+          '#bcbddc',
+          '#9e9ac8',
+          '#756bb1',
+          '#54278f',
         ],
       })
     case ARIA_BUTTONS[1]:
@@ -41,7 +41,7 @@ const findScale = selectedButton => {
         domain: PARTS,
         range: [
           '#ffe108',
-          '#ff890e',
+          '#ffb40b',
           '#fd6d6f',
           '#52e63b',
           '#11d2f9',
@@ -51,7 +51,7 @@ const findScale = selectedButton => {
     case ARIA_BUTTONS[2]:
       return scaleOrdinal({
         domain: ARTIST_CATEGORIES,
-        range: ['#ffe108', '#49f4e7'],
+        range: ['#fd6d6f', '#ffe108'],
       })
     default:
       return
