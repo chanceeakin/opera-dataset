@@ -15,7 +15,7 @@ const SecondPage = React.memo(({ data }) => {
       <Wrapper
         events
         margin={{ top: 50, left: 50, right: 0, bottom: 100 }}
-        title="Breakdown by Composer"
+        title="Composer Frequency"
         component={ComposerHeat}
       />
       <div

@@ -28,12 +28,12 @@ const findScale = selectedButton => {
       return scaleThreshold({
         domain: [5, 10, 20, 30, 40, 45],
         range: [
-          '#f2f0f7',
-          '#dadaeb',
-          '#bcbddc',
-          '#9e9ac8',
-          '#756bb1',
-          '#54278f',
+          '#00faff',
+          '#00e4f2',
+          '#00cee4',
+          '#00b8d4',
+          '#00a3c3',
+          '#008eb0',
         ],
       })
     case ARIA_BUTTONS[1]:
@@ -41,11 +41,11 @@ const findScale = selectedButton => {
         domain: PARTS,
         range: [
           '#ffe108',
-          '#ffb40b',
+          '#ffc10e',
           '#fd6d6f',
-          '#52e63b',
+          '#855af2',
           '#11d2f9',
-          '#9949f4',
+          '#49f4e7',
         ],
       })
     case ARIA_BUTTONS[2]:
@@ -110,7 +110,7 @@ export default withTooltip(
             <React.Fragment>
               <svg width={width} height={height}>
                 <rect width={width} height={height} rx={14} fill="#ffffff" />
-                <Pack root={data} size={[width, height]}>
+                <Pack root={data} size={[width, height]} padding={1.5}>
                   {pack => {
                     const circles = pack.descendants().slice(2)
                     return (
@@ -125,8 +125,6 @@ export default withTooltip(
                               fill={colorScale(
                                 findFill(circle, selectedButton)
                               )}
-                              stroke="black"
-                              strokeWidth="0.2px"
                               onMouseLeave={event => {
                                 tooltipTimeout = setTimeout(() => {
                                   hideTooltip()
