@@ -21,7 +21,7 @@ const Wrapper = React.memo(
   }) => {
     const padding = 40
     let width = screenWidth - padding
-    if (width > 800) width = 800
+    if (width > 960) width = 960
     const height = width * 0.6
 
     return (

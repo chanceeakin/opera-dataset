@@ -17,7 +17,7 @@ const SecondPage = React.memo(({ data }) => {
         margin={{
           top: 80,
         }}
-        title="Breakdown of aria offerings by Audition Category and voice type"
+        title="Arias by Audition Category and voice type"
         component={PartsBreakdown}
       />
       <div

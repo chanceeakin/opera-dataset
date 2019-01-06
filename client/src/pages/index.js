@@ -46,6 +46,9 @@ const IndexPage = React.memo(({ data }) => {
         <li>
           <Link to="/composer-heat/">Data by Composer</Link>
         </li>
+        <li>
+          <Link to="/arias/">Data by Aria</Link>
+        </li>
       </ul>
       <div
         className="blog-post-content"
