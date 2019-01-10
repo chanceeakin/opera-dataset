@@ -6,6 +6,7 @@ import { scaleThreshold, scaleOrdinal } from '@vx/scale'
 import { withTooltip, Tooltip } from '@vx/tooltip'
 import { LegendOrdinal, LegendThreshold } from '@vx/legend'
 import { ButtonContext } from '../../pages/arias'
+import Circle from './pack-circle'
 import { ARIA_BUTTONS, ARTIST_CATEGORIES, PARTS } from '../../constants'
 import json from '../../../../data/arias.json'
 
@@ -84,114 +85,102 @@ const findTooltipFill = (tooltipData, selectedButton) => {
   }
 }
 
-export default withTooltip(
-  ({
-    width,
-    height,
-    tooltipOpen,
-    tooltipLeft,
-    tooltipTop,
-    tooltipData,
-    hideTooltip,
-    showTooltip,
-    margin = {
-      top: 10,
-      left: 30,
-      right: 40,
-      bottom: 80,
-    },
-  }) => {
-    const data = hierarchy(pack).sum(d => d.frequency * d.frequency)
-    return (
-      <ButtonContext.Consumer>
-        {({ selectedButton }) => {
-          const colorScale = findScale(selectedButton)
-          return (
-            <React.Fragment>
-              <svg width={width} height={height}>
-                <rect width={width} height={height} rx={14} fill="#ffffff" />
-                <Pack root={data} size={[width, height]} padding={1.5}>
-                  {pack => {
-                    const circles = pack.descendants().slice(2)
-                    return (
-                      <Group top={-height - margin.bottom} left={width / 2}>
-                        {circles.map((circle, i) => {
-                          return (
-                            <circle
-                              key={`cir-${i}`}
-                              r={circle.r}
-                              cx={circle.x}
-                              cy={circle.y}
-                              fill={colorScale(
-                                findFill(circle, selectedButton)
-                              )}
-                              onMouseLeave={event => {
-                                tooltipTimeout = setTimeout(() => {
-                                  hideTooltip()
-                                }, 300)
-                              }}
-                              onMouseMove={e => {
-                                if (tooltipTimeout) clearTimeout(tooltipTimeout)
-                                const top =
-                                  e.clientY - margin.top - circle.height
-                                const left = circle.x
-                                showTooltip({
-                                  tooltipData: circle.data,
-                                  tooltipTop: top,
-                                  tooltipLeft: left,
-                                })
-                              }}
-                            />
-                          )
-                        })}
-                      </Group>
-                    )
-                  }}
-                </Pack>
-              </svg>
-              {selectedButton === ARIA_BUTTONS[1] ||
-              selectedButton === ARIA_BUTTONS[2] ? (
-                <LegendOrdinal
-                  scale={colorScale}
-                  direction="row"
-                  labelMargin="0 15px 0 0"
-                />
-              ) : (
-                <LegendThreshold
-                  scale={colorScale}
-                  direction="row"
-                  labelMargin="0 15px 0 0"
-                />
-              )}
-              {tooltipOpen && (
-                <Tooltip
-                  top={tooltipTop}
-                  left={tooltipLeft}
-                  style={{
-                    minWidth: 60,
-                    backgroundColor: 'rgba(0,0,0,0.75)',
-                    color: 'white',
-                  }}
-                >
-                  <div
+export default React.memo(
+  withTooltip(
+    ({
+      width,
+      height,
+      tooltipOpen,
+      tooltipLeft,
+      tooltipTop,
+      tooltipData,
+      hideTooltip,
+      showTooltip,
+      margin = {
+        top: 10,
+        left: 30,
+        right: 40,
+        bottom: 80,
+      },
+    }) => {
+      const data = hierarchy(pack).sum(d => d.frequency * d.frequency)
+      return (
+        <ButtonContext.Consumer>
+          {({ selectedButton }) => {
+            const colorScale = findScale(selectedButton)
+            return (
+              <React.Fragment>
+                <svg width={width} height={height}>
+                  <rect width={width} height={height} rx={14} fill="#ffffff" />
+                  <Pack root={data} size={[width, height]} padding={1.5}>
+                    {pack => {
+                      const circles = pack.descendants().slice(2)
+                      return (
+                        <Group top={-height - margin.bottom} left={width / 2}>
+                          {circles.map((circle, i) => {
+                            return (
+                              <Circle
+                                key={`cir-${i}`}
+                                circle={circle}
+                                colorScale={colorScale}
+                                findFill={findFill}
+                                tooltipTimeout={tooltipTimeout}
+                                margin={margin}
+                                showTooltip={showTooltip}
+                                hideTooltip={hideTooltip}
+                                selectedButton={selectedButton}
+                              />
+                            )
+                          })}
+                        </Group>
+                      )
+                    }}
+                  </Pack>
+                </svg>
+                {selectedButton === ARIA_BUTTONS[1] ||
+                selectedButton === ARIA_BUTTONS[2] ? (
+                  <LegendOrdinal
+                    scale={colorScale}
+                    direction="row"
+                    labelMargin="0 15px 0 0"
+                  />
+                ) : (
+                  <LegendThreshold
+                    scale={colorScale}
+                    direction="row"
+                    labelMargin="0 15px 0 0"
+                  />
+                )}
+                {tooltipOpen && (
+                  <Tooltip
+                    top={tooltipTop}
+                    left={tooltipLeft}
                     style={{
-                      color: colorScale(
-                        findTooltipFill(tooltipData, selectedButton)
-                      ),
+                      minWidth: 60,
+                      backgroundColor: 'rgba(0,0,0,0.75)',
+                      color: 'white',
                     }}
                   >
-                    <strong>{tooltipData.aria}</strong>
-                  </div>
-                  <div>{tooltipData.composer}</div>
-                  <div>{tooltipData.frequency}</div>
-                  <div>{tooltipData.artist}</div>
-                  <div>{tooltipData.voice}</div>
-                </Tooltip>
-              )}
-            </React.Fragment>
-          )
-        }}
-      </ButtonContext.Consumer>
-    )
-  }
+                    <div
+                      style={{
+                        color: colorScale(
+                          findTooltipFill(tooltipData, selectedButton)
+                        ),
+                      }}
+                    >
+                      <strong>{tooltipData.aria}</strong>
+                    </div>
+                    <div>{tooltipData.composer}</div>
+                    <div>{tooltipData.frequency}</div>
+                    <div>{tooltipData.artist}</div>
+                    <div>{tooltipData.voice}</div>
+                  </Tooltip>
+                )}
+              </React.Fragment>
+            )
+          }}
+        </ButtonContext.Consumer>
+      )
+    }
+  )
 )
