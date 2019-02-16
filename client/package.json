@@ -39,8 +39,8 @@
     "gatsby-transformer-sharp": "^2.1.8",
     "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
     "react-emotion": "^10.0.0",
     "react-helmet": "^5.2.0",
     "react-spring": "^7.2.7"
