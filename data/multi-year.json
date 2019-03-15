@@ -1,0 +1,82 @@
+{
+  "schema": {
+    "fields": [
+      {
+        "name": "Year",
+        "type": "integer"
+      },
+      {
+        "name": "Voice Type",
+        "type": "string"
+      },
+      {
+        "name": "Frequency",
+        "type": "integer"
+      }
+    ],
+    "primaryKey": ["Year", "Voice Type"],
+    "pandas_version": "0.20.0"
+  },
+  "data": [
+    {
+      "Year": 2018,
+      "Voice Type": "Baritone",
+      "Frequency": 513
+    },
+    {
+      "Year": 2018,
+      "Voice Type": "Bass",
+      "Frequency": 188
+    },
+    {
+      "Year": 2018,
+      "Voice Type": "Counter-tenor",
+      "Frequency": 48
+    },
+    {
+      "Year": 2018,
+      "Voice Type": "Mezzo",
+      "Frequency": 710
+    },
+    {
+      "Year": 2018,
+      "Voice Type": "Soprano",
+      "Frequency": 1460
+    },
+    {
+      "Year": 2018,
+      "Voice Type": "Tenor",
+      "Frequency": 632
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Baritone",
+      "Frequency": 464
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Bass",
+      "Frequency": 274
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Counter-tenor",
+      "Frequency": 41
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Mezzo",
+      "Frequency": 685
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Soprano",
+      "Frequency": 1705
+    },
+    {
+      "Year": 2019,
+      "Voice Type": "Tenor",
+      "Frequency": 584
+    }
+  ]
+}
