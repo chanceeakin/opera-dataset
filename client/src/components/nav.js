@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { Transition } from 'react-spring'
+import { Transition } from 'react-spring/renderprops'
 
 export const Container = styled.nav`
   ul {
@@ -48,67 +48,58 @@ export const StyledLink = styled(Link)`
   }
 `
 
-class Nav extends React.Component {
-  constructor() {
-    super()
+const Nav = () => {
+  const [isMenuShown, setMenu] = React.useState(false)
 
-    this.state = {
-      displayMenu: false,
-    }
-
-    this.showDropdownMenu = this.showDropdownMenu.bind(this)
-    this.hideDropdownMenu = this.hideDropdownMenu.bind(this)
-  }
-
-  showDropdownMenu(event) {
+  const showDropdownMenu = event => {
     event.preventDefault()
-    this.setState({ displayMenu: true }, () => {
-      document.addEventListener('click', this.hideDropdownMenu)
-    })
+    setMenu(true)
+    document.addEventListener('click', hideDropdownMenu)
   }
 
-  hideDropdownMenu() {
-    this.setState({ displayMenu: false }, () => {
-      document.removeEventListener('click', this.hideDropdownMenu)
-    })
+  const hideDropdownMenu = () => {
+    setMenu(false)
+    document.removeEventListener('click', hideDropdownMenu)
   }
 
-  render() {
-    const { displayMenu } = this.state
-    return (
-      <Container>
-        <Dropdown>
-          <Button onClick={this.showDropdownMenu}>Visualizations</Button>
-          <Transition
-            items={displayMenu}
-            from={{ opacity: 0, transform: 'translateY(-10px)' }}
-            enter={{ opacity: 1, transform: 'translateY(0px)' }}
-            leave={{ opacity: 0, transform: 'translateY(-10px)' }}
-          >
-            {displayMenu =>
-              displayMenu &&
-              (props => {
-                return (
-                  <ul style={props}>
-                    <DropdownList>
-                      <StyledLink to="/composer-heat/">
-                        Composer Heat Map
-                      </StyledLink>
-                    </DropdownList>
-                    <DropdownList>
-                      <StyledLink to="/by-category/">Categories</StyledLink>
-                    </DropdownList>
-                    <DropdownList>
-                      <StyledLink to="/arias/">Arias</StyledLink>
-                    </DropdownList>
-                  </ul>
-                )
-              })
-            }
-          </Transition>
-        </Dropdown>
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <Dropdown>
+        <Button onClick={showDropdownMenu}>Visualizations</Button>
+        <Transition
+          items={isMenuShown}
+          from={{ opacity: 0, transform: 'translateY(-10px)' }}
+          enter={{ opacity: 1, transform: 'translateY(0px)' }}
+          leave={{ opacity: 0, transform: 'translateY(-10px)' }}
+        >
+          {isMenuShown =>
+            isMenuShown &&
+            (props => {
+              return (
+                <ul style={props}>
+                  <DropdownList>
+                    <StyledLink to="/composer-heat/">
+                      Composer Heat Map
+                    </StyledLink>
+                  </DropdownList>
+                  <DropdownList>
+                    <StyledLink to="/by-category/">Categories</StyledLink>
+                  </DropdownList>
+                  <DropdownList>
+                    <StyledLink to="/arias/">Arias</StyledLink>
+                  </DropdownList>
+                  <DropdownList>
+                    <StyledLink to="/voices-by-year/">
+                      Voice Types By Year
+                    </StyledLink>
+                  </DropdownList>
+                </ul>
+              )
+            })
+          }
+        </Transition>
+      </Dropdown>
+    </Container>
+  )
 }
 export default Nav
