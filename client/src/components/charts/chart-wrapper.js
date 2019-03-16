@@ -10,8 +10,6 @@ const Container = styled.div`
 const Wrapper = React.memo(
   ({
     screenWidth,
-    screenHeight,
-    children,
     title,
     component,
     shadow = false,
@@ -26,7 +24,7 @@ const Wrapper = React.memo(
 
     return (
       <Container>
-        <div style={{ width: width }}>
+        <div style={{ width }}>
           <h1>{title}</h1>
         </div>
         <div

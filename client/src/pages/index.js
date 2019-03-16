@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import SEO from '../components/common/seo'
 
 const IndexPage = React.memo(({ data }) => {
   const { markdownRemark } = data
@@ -31,9 +31,9 @@ const IndexPage = React.memo(({ data }) => {
         <code>pandas.Dataframe</code>.
       </p>
       <p>
-        There were 3750 instances from 1108 unique arias (operatic solos for
-        software folks) on audition sheets this year (or they heard 3750 singers
-        in person...optimistic but unlikely).
+        In 2019, there were 3750 instances from 1108 unique arias (operatic
+        solos for software folks) on audition sheets this year (or they heard
+        3750 singers in person...optimistic but unlikely).
       </p>
       <p>
         <strong>THIS SITE CURRENTLY BEST VIEWED ON DESKTOP.</strong>

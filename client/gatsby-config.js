@@ -5,6 +5,7 @@ module.exports = {
     author: `Chance Eakin`,
   },
   plugins: [
+    `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

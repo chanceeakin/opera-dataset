@@ -108,100 +108,93 @@ export default React.memo(
         bottom: 80,
       },
     }) => {
+      const context = React.useContext(ButtonContext)
       const data = hierarchy(pack).sum(d => d.frequency * d.frequency)
+      const colorScale = findScale(context.selectedButton)
       return (
-        <ButtonContext.Consumer>
-          {({ selectedButton }) => {
-            const colorScale = findScale(selectedButton)
-            return (
-              <React.Fragment>
-                <svg width={width} height={height}>
-                  <rect width={width} height={height} rx={14} fill="#ffffff" />
-                  <Pack root={data} size={[width, height]} padding={1.5}>
-                    {pack => {
-                      const circles = pack.descendants().slice(2)
+        <React.Fragment>
+          <svg width={width} height={height}>
+            <rect width={width} height={height} rx={14} fill="#ffffff" />
+            <Pack root={data} size={[width, height]} padding={1.5}>
+              {pack => {
+                const circles = pack.descendants().slice(2)
+                return (
+                  <Group top={-height - margin.bottom} left={width / 2}>
+                    {circles.map((circle, i) => {
                       return (
-                        <Group top={-height - margin.bottom} left={width / 2}>
-                          {circles.map((circle, i) => {
-                            return (
-                              <circle
-                                key={`cir-${i}`}
-                                r={circle.r}
-                                cx={circle.x}
-                                cy={circle.y}
-                                fill={colorScale(
-                                  findFill(circle, selectedButton)
-                                )}
-                                onMouseLeave={event => {
-                                  tooltipTimeout = setTimeout(() => {
-                                    hideTooltip()
-                                  }, 300)
-                                }}
-                                onMouseMove={e => {
-                                  if (tooltipTimeout)
-                                    clearTimeout(tooltipTimeout)
-                                  const top =
-                                    e.clientY - margin.top - circle.height
-                                  const left = circle.x
-                                  showTooltip({
-                                    tooltipData: circle.data,
-                                    tooltipTop: top,
-                                    tooltipLeft: left,
-                                  })
-                                }}
-                              />
-                            )
-                          })}
-                        </Group>
+                        <circle
+                          key={`cir-${i}`}
+                          r={circle.r}
+                          cx={circle.x}
+                          cy={circle.y}
+                          fill={colorScale(
+                            findFill(circle, context.selectedButton)
+                          )}
+                          onMouseLeave={() => {
+                            tooltipTimeout = setTimeout(() => {
+                              hideTooltip()
+                            }, 300)
+                          }}
+                          onMouseMove={e => {
+                            if (tooltipTimeout) clearTimeout(tooltipTimeout)
+                            const top = e.clientY - margin.top - circle.height
+                            const left = circle.x
+                            showTooltip({
+                              tooltipData: circle.data,
+                              tooltipTop: top,
+                              tooltipLeft: left,
+                            })
+                          }}
+                        />
                       )
-                    }}
-                  </Pack>
-                </svg>
-                <LegendOverflow>
-                  {selectedButton === ARIA_BUTTONS[1] ||
-                  selectedButton === ARIA_BUTTONS[2] ? (
-                    <LegendOrdinal
-                      scale={colorScale}
-                      direction="row"
-                      labelMargin="0 15px 0 0"
-                    />
-                  ) : (
-                    <LegendThreshold
-                      scale={colorScale}
-                      direction="row"
-                      labelMargin="0 15px 0 0"
-                    />
-                  )}
-                </LegendOverflow>
-                {tooltipOpen && (
-                  <Tooltip
-                    top={tooltipTop}
-                    left={tooltipLeft}
-                    style={{
-                      minWidth: 60,
-                      backgroundColor: 'rgba(0,0,0,0.75)',
-                      color: 'white',
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: colorScale(
-                          findTooltipFill(tooltipData, selectedButton)
-                        ),
-                      }}
-                    >
-                      <strong>{tooltipData.aria}</strong>
-                    </div>
-                    <div>{tooltipData.composer}</div>
-                    <div>{tooltipData.frequency}</div>
-                    <div>{tooltipData.artist}</div>
-                    <div>{tooltipData.voice}</div>
-                  </Tooltip>
-                )}
-              </React.Fragment>
-            )
-          }}
-        </ButtonContext.Consumer>
+                    })}
+                  </Group>
+                )
+              }}
+            </Pack>
+          </svg>
+          <LegendOverflow>
+            {context.selectedButton === ARIA_BUTTONS[1] ||
+            context.selectedButton === ARIA_BUTTONS[2] ? (
+              <LegendOrdinal
+                scale={colorScale}
+                direction="row"
+                labelMargin="0 15px 0 0"
+              />
+            ) : (
+              <LegendThreshold
+                scale={colorScale}
+                direction="row"
+                labelMargin="0 15px 0 0"
+              />
+            )}
+          </LegendOverflow>
+          {tooltipOpen && (
+            <Tooltip
+              top={tooltipTop}
+              left={tooltipLeft}
+              style={{
+                minWidth: 60,
+                backgroundColor: 'rgba(0,0,0,0.75)',
+                color: 'white',
+              }}
+            >
+              <div
+                style={{
+                  color: colorScale(
+                    findTooltipFill(tooltipData, context.selectedButton)
+                  ),
+                }}
+              >
+                <strong>{tooltipData.aria}</strong>
+              </div>
+              <div>{tooltipData.composer}</div>
+              <div>{tooltipData.frequency}</div>
+              <div>{tooltipData.artist}</div>
+              <div>{tooltipData.voice}</div>
+            </Tooltip>
+          )}
+        </React.Fragment>
       )
     }
   )

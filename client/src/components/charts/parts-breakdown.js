@@ -6,6 +6,7 @@ import { AxisBottom } from '@vx/axis'
 import { scaleBand, scaleLinear, scaleOrdinal } from '@vx/scale'
 import { withTooltip, Tooltip } from '@vx/tooltip'
 import { LegendOrdinal } from '@vx/legend'
+
 import { ARTIST_CATEGORIES, PARTS } from '../../constants'
 import json from '../../../../data/data.json'
 

@@ -4,7 +4,7 @@ import { scaleLinear } from '@vx/scale'
 import { HeatmapRect } from '@vx/heatmap'
 import { withTooltip, Tooltip } from '@vx/tooltip'
 import json from '../../../../data/composers.json'
-import './heat-map.css'
+import './composer-heat-map.css'
 
 const cool1 = '#65907e'
 const cool2 = '#b4fbde'
@@ -124,7 +124,7 @@ export default React.memo(
                           y={bin.y}
                           fill={bin.color}
                           fillOpacity={bin.opacity}
-                          onMouseLeave={event => {
+                          onMouseLeave={() => {
                             tooltipTimeout = setTimeout(() => {
                               hideTooltip()
                             }, 300)

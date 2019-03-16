@@ -3,8 +3,9 @@ import { Group } from '@vx/group'
 import { BarGroup } from '@vx/shape'
 import { AxisBottom } from '@vx/axis'
 import { scaleBand, scaleLinear, scaleOrdinal } from '@vx/scale'
-import { PARTS } from '../../constants'
 import { withTooltip, Tooltip } from '@vx/tooltip'
+
+import { PARTS } from '../../constants'
 import json from '../../../../data/multi-year.json'
 
 const blue = '#aeeef8'

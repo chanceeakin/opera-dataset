@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+import Header from './common/header'
+import Footer from './common/footer'
 import './layout.css'
 
 const Layout = ({ children }) => (
@@ -28,27 +29,7 @@ const Layout = ({ children }) => (
           }}
         >
           {children}
-          <footer
-            style={{
-              paddingTop: '2rem',
-            }}
-          >
-            <p>
-              © 2019. Made with{' '}
-              <span role="img" aria-label="heart">
-                ❤️
-              </span>{' '}
-              <span role="img" aria-label="heart">
-                ☕️
-              </span>
-              {' and '}
-              <span role="img" aria-label="bourbon">
-                🥃
-              </span>
-              by <a href="https://chanceeakin.io">Chance Eakin</a> using{' '}
-              <a href="https://www.gatsbyjs.org">GatsbyJS.</a>
-            </p>
-          </footer>
+          <Footer />
         </div>
       </React.Fragment>
     )}
