@@ -1,6 +1,6 @@
 ---
 title: Young Artist Audition Data
-date: January 5, 2019
+date: March 15th, 2019
 ---
 
 ### Why am I building this?
@@ -14,8 +14,8 @@ an analysis.
 ### Future Plans
 
 - Data Sanitiztion/Normalization: While this dataset is a great resource, there are a lot of discrepancies in white-space, spellings, diacritical markings which result in a suboptimal analysis. Going to continue to clean that up as I go along.
-- Additional Charts and Graphs, delivered on a weekly basis. I'm also an optimist on that assessment, and beg indulgence for those times where...life gets in the way.
-- Would like to pull this into a jupyter notebook, as well as aggregate previous seasons of audition data for predictive analytics on the 2020 audition season. As much fun as it is to passive aggressively predict next years' lists, wouldn't it be more fun to quantitatively predict how many hopeful mezzos are going to offer "Must the winter come so soon?" before we even crack open that YAP tracking site?
+- Additional Charts and Graphs, delivered on a monthly basis. I'm also an optimist on that assessment, and beg indulgence for those times where...life gets in the way.
+- Would like to pull this into a Jupyter notebook, as well as aggregate previous seasons of audition data for predictive analytics on the 2020 audition season. As much fun as it is to passive aggressively predict next years' lists, wouldn't it be more fun to quantitatively predict how many hopeful mezzos are going to offer "Must the winter come so soon?" before we even crack open that YAP tracking site?
 
 ### Want to help?
 
