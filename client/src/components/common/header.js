@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+
 import Nav from './nav'
 
 class Header extends React.Component {

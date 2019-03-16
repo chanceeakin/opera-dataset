@@ -124,7 +124,7 @@ export default React.memo(
                           y={bin.y}
                           fill={bin.color}
                           fillOpacity={bin.opacity}
-                          onMouseLeave={event => {
+                          onMouseLeave={() => {
                             tooltipTimeout = setTimeout(() => {
                               hideTooltip()
                             }, 300)
