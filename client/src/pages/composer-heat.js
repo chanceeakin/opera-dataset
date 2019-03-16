@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import SEO from '../components/seo'
+import SEO from '../components/common/seo'
 import Wrapper from '../components/charts/chart-wrapper'
-import ComposerHeat from '../components/charts/composer-heat'
+import ComposerHeat from '../components/charts/composer-heat-map'
 
 const SecondPage = React.memo(({ data }) => {
   const { markdownRemark } = data
