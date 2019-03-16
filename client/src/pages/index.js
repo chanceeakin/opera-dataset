@@ -31,9 +31,9 @@ const IndexPage = React.memo(({ data }) => {
         <code>pandas.Dataframe</code>.
       </p>
       <p>
-        There were 3750 instances from 1108 unique arias (operatic solos for
-        software folks) on audition sheets this year (or they heard 3750 singers
-        in person...optimistic but unlikely).
+        In 2019, there were 3750 instances from 1108 unique arias (operatic
+        solos for software folks) on audition sheets this year (or they heard
+        3750 singers in person...optimistic but unlikely).
       </p>
       <p>
         <strong>THIS SITE CURRENTLY BEST VIEWED ON DESKTOP.</strong>

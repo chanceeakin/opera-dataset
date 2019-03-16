@@ -6,7 +6,7 @@ import SEO from '../components/common/seo'
 import Wrapper from '../components/charts/chart-wrapper'
 import PartsBreakdown from '../components/charts/parts-breakdown'
 
-const SecondPage = React.memo(({ data }) => {
+const ByCategory = React.memo(({ data }) => {
   const { markdownRemark } = data
   const { html, frontmatter } = markdownRemark
   return (
@@ -42,4 +42,4 @@ export const query = graphql`
   }
 `
 
-export default SecondPage
+export default ByCategory

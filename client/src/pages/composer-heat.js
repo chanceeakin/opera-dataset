@@ -6,7 +6,7 @@ import SEO from '../components/common/seo'
 import Wrapper from '../components/charts/chart-wrapper'
 import ComposerHeat from '../components/charts/composer-heat-map'
 
-const SecondPage = React.memo(({ data }) => {
+const ComposerHeatPage = React.memo(({ data }) => {
   const { markdownRemark } = data
   const { html, frontmatter } = markdownRemark
   return (
@@ -40,4 +40,4 @@ export const query = graphql`
   }
 `
 
-export default SecondPage
+export default ComposerHeatPage
