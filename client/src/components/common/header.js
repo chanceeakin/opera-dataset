@@ -29,16 +29,36 @@ const StyledLink = styled(Link)`
 `
 
 const Header = ({ siteTitle }) => (
-  <Container>
-    <Row>
-      <Title>
-        <StyledLink to="/" style={{}}>
-          {siteTitle}
-        </StyledLink>
-      </Title>
-      <Nav />
-    </Row>
-  </Container>
+  <>
+    <Container>
+      <Row>
+        <Title>
+          <StyledLink to="/" style={{}}>
+            {siteTitle}
+          </StyledLink>
+        </Title>
+        <Nav />
+      </Row>
+      <div
+        style={{
+          background: `tomato`,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '.25rem',
+        }}
+      >
+        <h4
+          style={{
+            marginBottom: '0',
+          }}
+        >
+          This page will go offline on January 5th, 2020. It's been a fun ride!
+        </h4>
+      </div>
+    </Container>
+  </>
 )
 
 Header.propTypes = {
